@@ -1,6 +1,6 @@
-LoadUsers
+Censuses
 =========
 
-Load Users skeleton
+Censuses skeleton
 
 
