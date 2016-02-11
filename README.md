@@ -3,6 +3,10 @@
 Censuses
 =========
 
-Censuses skeleton
+# Authors
+
+* Gabriela Agnieszka Lagowska
+* Cecilia Tudela Cueto
+* Johan Arif Clavijo Muñoz
 
 
