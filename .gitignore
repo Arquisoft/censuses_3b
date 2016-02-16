@@ -19,6 +19,12 @@ local.properties
 .settings/
 .loadpath
 
+# Database
+data/
+
+#Libraries
+lib/
+
 # Eclipse Core
 .project
 
