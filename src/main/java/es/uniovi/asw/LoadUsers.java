@@ -18,8 +18,8 @@ public class LoadUsers {
 	
 
 	public static void main(String... args) throws SQLException {
-//		LoadUsers runner = new LoadUsers();
-//		runner.run(args);
+		//LoadUsers runner = new LoadUsers();
+		//runner.run(args);
 		
 		
 		Insert r = new InsertR(new RCensus());

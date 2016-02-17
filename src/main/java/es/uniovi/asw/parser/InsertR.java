@@ -4,14 +4,20 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import es.uniovi.asw.dbUpdate.InsertP;
+import es.uniovi.asw.parser.carta.CartaCensuses;
+import es.uniovi.asw.parser.carta.CartaPDF;
+import es.uniovi.asw.parser.read.RCensus;
+import es.uniovi.asw.parser.read.ReadCensus;
 
 
 public class InsertR implements Insert {
 	private ReadCensus reader;
+	private CartaCensuses carta;
 
 	public InsertR(ReadCensus reader) {
 		super();
 		this.reader = new RCensus();
+		this.carta = new CartaPDF();
 	}
 	
 
@@ -39,12 +45,10 @@ public class InsertR implements Insert {
 
 			System.out.println("\n");
 			
+			carta.crearCarta(v);
 			
 		}
 		
 	}
-	
-	
-	
 	
 }
