@@ -38,11 +38,15 @@ public class RCensus implements ReadCensus {
 				ArrayList<String> arr = new ArrayList<String>();
 			
 				if (!(row.getRowNum() == 0)) { //Para omitir la primera fila...
-					arr.add(row.getCell(0).toString());// nombre
+					if(row.getCell(0)==null) arr.add("");
+					else arr.add(row.getCell(0).toString());// nombre
+					
 					arr.add(row.getCell(1).toString());// nif
 					arr.add(generarEmail(row.getCell(0).toString()
 							.replace(" ", "")));
-					arr.add(row.getCell(2).toString());// codColegio
+					
+					if(row.getCell(2)==null) arr.add("-1");
+					else arr.add(row.getCell(2).toString());// codColegio
 					arr.add(generarPassword());
 
 					mapa.put(cont++, arr);

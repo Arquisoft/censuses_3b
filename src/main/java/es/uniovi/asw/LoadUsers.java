@@ -4,8 +4,8 @@ package es.uniovi.asw;
 import java.sql.SQLException;
 
 import es.uniovi.asw.ReportWriter.WReportP;
-import es.uniovi.asw.ReportWriter.WriteReport;
 import es.uniovi.asw.dbUpdate.InsertP;
+import es.uniovi.asw.dbUpdate.WReportR;
 import es.uniovi.asw.parser.Insert;
 import es.uniovi.asw.parser.InsertR;
 import es.uniovi.asw.parser.read.RCensus;
@@ -23,14 +23,12 @@ public class LoadUsers {
 		//LoadUsers runner = new LoadUsers();
 		//runner.run(args);
 		
-		WriteReport report = new WReportP();
+		WReportR report = new WReportR(new WReportP());
 		
 		Insert r = new InsertR(new RCensus());
 		r.addVotante(new InsertP(report) );
 		    
 	}
-
-	
 
 	
 	void run(String... args) {

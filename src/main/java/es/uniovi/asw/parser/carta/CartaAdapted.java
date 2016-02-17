@@ -4,7 +4,7 @@ import es.uniovi.asw.parser.Votante;
 
 public class CartaAdapted {
 	
-	private static String RUTA = "src/main/resources/";
+	private static String RUTA = "cartas/";
 	
 	public String getRuta(){
 		return RUTA;

@@ -4,59 +4,47 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import es.uniovi.asw.ReportWriter.WriteReport;
 import es.uniovi.asw.parser.Votante;
 
 public class InsertP implements Insert {
 	
-	WriteReport report;
+	WReportR reportR;
 	
-	public InsertP(WriteReport report) {
-		this.report = report;
-	}
-	
-	public boolean validarVotante(Votante v) {
-		if (!v.getNombre().isEmpty() && !v.getNIF().isEmpty()
-				&& !v.getEmail().isEmpty() && v.getCodColegioElectoral() >= 0
-				&& !v.getPassword().isEmpty()) {
-			return true;
-		} else {
-			return false;
-		}
+	public InsertP(WReportR report) {
+		reportR = report;
 	}
 	
 	@Override
 	public void insertar(Votante v) {
-		
-		if(!validarVotante(v)){
-			throw new IllegalArgumentException("El votante tiene alguún atributo con un valor invalido");
-		}
-		
 		Connection c;
-		try {
-			c = Jdbc.getConnection();
-			PreparedStatement ps = c
-					.prepareStatement("INSERT INTO CENSOS (NOMBRE, NIF, EMAIL, CODCOLEGIOELECTORAL, PASSWORD) VALUES(?, ?, ?, ?, ?)");
-			ps.setString(1, v.getNombre());
-			ps.setString(2, v.getNIF());
-			ps.setString(3, v.getEmail());
-			ps.setInt(4, v.getCodColegioElectoral());
-			ps.setString(5, v.getPassword());
-			ps.execute();
-			
-			System.out.println("El usuario del cliente " + v.getNombre()
-					+ " es " + v.getEmail() + " y su contraseña es "
-					+ v.getPassword());
-			
-			ps.close();
-			c.close();
-			
-		} catch (SQLException e) {
-			
-			//e.printStackTrace();
-			report.setLog("ERROR AL INTRODUCIR USUARIO EN BASE DE DATOS");
-		}
+		String error = "";
 		
+		if(reportR.validarVotante(v)){
+			try {
+				c = Jdbc.getConnection();
+				PreparedStatement ps = c
+						.prepareStatement("INSERT INTO CENSOS (NOMBRE, NIF, EMAIL, CODCOLEGIOELECTORAL, PASSWORD) VALUES(?, ?, ?, ?, ?)");
+				ps.setString(1, v.getNombre());
+				ps.setString(2, v.getNIF());
+				ps.setString(3, v.getEmail());
+				ps.setInt(4, v.getCodColegioElectoral());
+				ps.setString(5, v.getPassword());
+				ps.execute();
+				
+				System.out.println("El usuario del cliente " + v.getNombre()
+						+ " es " + v.getEmail() + " y su contraseña es "
+						+ v.getPassword());
+				
+				ps.close();
+				c.close();
+				
+			} catch (SQLException e) {
+				error = "El votante con nombre: " + v.getNombre() + " y DNI: " + v.getNIF();
+				error = error + " no se ha podido cargar correctamente en la base de datos.";
+				reportR.setLog("ERROR: " + error);
+			}
+		}
+			
 	}
 
 }
