@@ -4,12 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import es.uniovi.asw.ReportWriter.WriteReport;
 import es.uniovi.asw.parser.Votante;
 
 public class InsertP implements Insert {
 	
-
-
+	WriteReport report;
+	
+	public InsertP(WriteReport report) {
+		this.report = report;
+	}
+	
 	public boolean validarVotante(Votante v) {
 		if (!v.getNombre().isEmpty() && !v.getNIF().isEmpty()
 				&& !v.getEmail().isEmpty() && v.getCodColegioElectoral() >= 0
@@ -47,7 +52,9 @@ public class InsertP implements Insert {
 			c.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
+			//e.printStackTrace();
+			report.setLog("ERROR AL INTRODUCIR USUARIO EN BASE DE DATOS");
 		}
 		
 	}

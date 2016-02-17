@@ -3,10 +3,12 @@ package es.uniovi.asw;
 
 import java.sql.SQLException;
 
+import es.uniovi.asw.ReportWriter.WReportP;
+import es.uniovi.asw.ReportWriter.WriteReport;
 import es.uniovi.asw.dbUpdate.InsertP;
 import es.uniovi.asw.parser.Insert;
 import es.uniovi.asw.parser.InsertR;
-import es.uniovi.asw.parser.RCensus;
+import es.uniovi.asw.parser.read.RCensus;
 
 /**
  * Main application
@@ -21,10 +23,10 @@ public class LoadUsers {
 		//LoadUsers runner = new LoadUsers();
 		//runner.run(args);
 		
+		WriteReport report = new WReportP();
 		
 		Insert r = new InsertR(new RCensus());
-		r.addVotante(new InsertP() );
-		
+		r.addVotante(new InsertP(report) );
 		    
 	}
 
