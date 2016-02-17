@@ -20,6 +20,7 @@ public class InsertR implements Insert {
 		Map<Integer, ArrayList<String>> map = reader.leerFichero("test.xlsx");
 		Votante v;
 		
+		
 		for (Map.Entry<Integer, ArrayList<String>> entry : map.entrySet())
 		{
 		    System.out.println(entry.getKey() + " ");

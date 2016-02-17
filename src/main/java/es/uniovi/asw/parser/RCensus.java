@@ -67,6 +67,7 @@ public class RCensus implements ReadCensus {
 				System.out.println("");
 			}
 			file.close();
+			System.out.println();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
