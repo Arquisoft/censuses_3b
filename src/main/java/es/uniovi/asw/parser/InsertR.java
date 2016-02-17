@@ -29,7 +29,7 @@ public class InsertR implements Insert {
 			}
 			
 			v = new Votante(entry.getValue().get(0), entry.getValue().get(1),
-					entry.getValue().get(2), 5, //Integer.parseInt(entry.getValue().get(3))
+					entry.getValue().get(2), (int) Double.parseDouble(entry.getValue().get(3)),
 					entry.getValue().get(4));
 			
 			

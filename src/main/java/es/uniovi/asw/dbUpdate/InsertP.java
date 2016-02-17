@@ -30,7 +30,7 @@ public class InsertP implements Insert {
 		Connection c;
 		try {
 			c = Jdbc.getConnection();
-			PreparedStatement ps = c.prepareStatement("INSERT INTO CENSOS VALUES(?, ?, ?, ?, ?)");
+			PreparedStatement ps = c.prepareStatement("INSERT INTO CENSOS (NOMBRE, NIF, EMAIL, CODCOLEGIOELECTORAL, PASSWORD) VALUES(?, ?, ?, ?, ?)");
 			ps.setString(1, v.getNombre());
 			ps.setString(2, v.getNIF());
 			ps.setString(3, v.getEmail());
@@ -38,7 +38,7 @@ public class InsertP implements Insert {
 			ps.setString(5, v.getPassword());
 			ps.execute();
 			
-			System.out.println("El usuario del cliente +" + v.getNombre() + " es " 
+			System.out.println("El usuario del cliente +" + v.getEmail() + " es " 
 			+ " y su contraseña es " + v.getPassword());
 			
 			ps.close();

@@ -36,9 +36,9 @@ public class LoadUsers {
 //		runner.run(args);
 		
 		
-//		Insert r = new InsertR(new RCensus());
-//		r.addVotante(new InsertP() );
-//		
+		Insert r = new InsertR(new RCensus());
+		r.addVotante(new InsertP() );
+		
 		    
 	}
 

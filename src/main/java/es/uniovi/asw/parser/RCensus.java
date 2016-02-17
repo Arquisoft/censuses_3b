@@ -37,13 +37,16 @@ public class RCensus implements ReadCensus {
 				
 				ArrayList<String> arr = new ArrayList<String>();
 			
-				arr.add(row.getCell(0).toString());//nombre 
-				arr.add(row.getCell(1).toString());//nif
-				arr.add(generarEmail(row.getCell(0).toString().replace(" ", "")));
-				arr.add(row.getCell(2).toString());//codColegio
-				arr.add(generarPassword());
-				
-				mapa.put(cont++, arr);
+				if (!(row.getRowNum() == 0)) { //Para omitir la primera fila...
+					arr.add(row.getCell(0).toString());// nombre
+					arr.add(row.getCell(1).toString());// nif
+					arr.add(generarEmail(row.getCell(0).toString()
+							.replace(" ", "")));
+					arr.add(row.getCell(2).toString());// codColegio
+					arr.add(generarPassword());
+
+					mapa.put(cont++, arr);
+				}
 
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
