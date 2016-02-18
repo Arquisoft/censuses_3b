@@ -1,6 +1,6 @@
 package es.uniovi.asw.dbUpdate;
 
-import es.uniovi.asw.ReportWriter.WriteReport;
+import es.uniovi.asw.reportWriter.WriteReport;
 import es.uniovi.asw.parser.Votante;
 
 public class WReportR {

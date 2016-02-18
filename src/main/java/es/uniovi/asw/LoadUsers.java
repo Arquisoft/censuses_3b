@@ -3,7 +3,7 @@ package es.uniovi.asw;
 
 import java.sql.SQLException;
 
-import es.uniovi.asw.ReportWriter.WReportP;
+import es.uniovi.asw.reportWriter.WReportP;
 import es.uniovi.asw.dbUpdate.InsertP;
 import es.uniovi.asw.dbUpdate.WReportR;
 import es.uniovi.asw.parser.Insert;
