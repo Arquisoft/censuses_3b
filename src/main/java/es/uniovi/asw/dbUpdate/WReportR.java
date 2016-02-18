@@ -11,6 +11,12 @@ public class WReportR {
 		this.report = report;
 	}
 	
+	/**
+	 * Método que comprueba que todos los datos del votante son correctos.
+	 * Si hay algún problema, este error se almacena en el fichero de LOG
+	 * @param v		Votante que se quiere cargar en la BBDD
+	 * @return	true si los datos son válidos | false si hay algún error
+	 */
 	public boolean validarVotante(Votante v) {
 		String datos = "ERROR: En el votante ";
 		if (!v.getNombre().isEmpty() && !v.getNIF().isEmpty()
@@ -37,6 +43,11 @@ public class WReportR {
 		}
 	}
 	
+	/**
+	 * Método que pasa un informe de error a ReportWriter 
+	 * para que este error quede almacenado en el fichero LOG
+	 * @param datos		Cadena que explica el error
+	 */
 	public void setLog(String datos){
 		report.setLog(datos);
 	}

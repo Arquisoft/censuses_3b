@@ -16,6 +16,9 @@ public class CartaPDF implements CartaCensuses{
 		cartaAdapted = new CartaAdapted();
 	}
 
+	/**
+	 * Método que crea una carta en formato PDF
+	 */
 	@Override
 	public void crearCarta(Votante v) {
         try{

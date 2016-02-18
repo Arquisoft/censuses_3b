@@ -6,14 +6,20 @@ import java.util.Calendar;
 
 public class WReportP implements WriteReport{
 	
+	private static String RUTA_LOG = "log.txt";	
+	
+	/**
+	 * Método que recibe el error producido al cargar un usuario  y lo escribe en 
+	 * el fichero log junto a la fecha exacta en la que se ha producido dicho error.
+	 */
 	@Override
 	public void setLog(String datos) {
 		FileWriter archivo = null;
 		try{
-			if (new File("log.txt").exists()==false){
-		    	   archivo = new FileWriter(new File("log.txt"),false);
+			if (new File(RUTA_LOG).exists()==false){
+		    	   archivo = new FileWriter(new File(RUTA_LOG),false);
 		       }
-		           archivo = new FileWriter(new File("log.txt"), true);
+		           archivo = new FileWriter(new File(RUTA_LOG), true);
 		            Calendar fechaActual = Calendar.getInstance();  
 		            
 		            archivo.write((String.valueOf(fechaActual.get(Calendar.DAY_OF_MONTH))

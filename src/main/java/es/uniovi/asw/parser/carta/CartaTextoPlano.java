@@ -14,6 +14,9 @@ public class CartaTextoPlano implements CartaCensuses{
 		cartaAdapted = new CartaAdapted();
 	}
 
+	/**
+	 * Método que crea una carta en formato TXT (Texto plano)
+	 */
 	@Override
 	public void crearCarta(Votante v) {
 		String ruta = cartaAdapted.getRuta() + v.getNIF() +".txt";

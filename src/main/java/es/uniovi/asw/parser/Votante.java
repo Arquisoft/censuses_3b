@@ -8,6 +8,9 @@ public class Votante {
 	private int codColegioElectoral;
 	private String password;
 	
+	public Votante(){
+		
+	}
 	
 	public Votante(String nombre, String nIF, String email,
 			int codColegioElectoral, String password) {
@@ -67,6 +70,13 @@ public class Votante {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Votante [nombre=" + nombre + ", NIF=" + NIF + ", email=" + email + ", codColegioElectoral="
+				+ codColegioElectoral + ", password=" + password + "]";
 	}
 	
 	

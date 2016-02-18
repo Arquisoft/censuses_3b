@@ -15,6 +15,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class RCensus implements ReadCensus {
 
+	/**
+	 * Método que lee todos los votantes incluidos en un archivo Excel y los devuelve
+	 */
 	@Override
 	public Map<Integer, ArrayList<String>> leerFichero(String nombreFichero) {
 		Map<Integer, ArrayList<String>> mapa = new HashMap<Integer, ArrayList<String>>();
@@ -22,8 +25,7 @@ public class RCensus implements ReadCensus {
 			 
 		try {
 			
-			FileInputStream file = new FileInputStream(new File(
-					"src/test/resources/" + nombreFichero));
+			FileInputStream file = new FileInputStream(new File(nombreFichero));
 
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
@@ -38,15 +40,20 @@ public class RCensus implements ReadCensus {
 				ArrayList<String> arr = new ArrayList<String>();
 			
 				if (!(row.getRowNum() == 0)) { //Para omitir la primera fila...
+					//Nombre
 					if(row.getCell(0)==null) arr.add("");
-					else arr.add(row.getCell(0).toString());// nombre
-					
-					arr.add(row.getCell(1).toString());// nif
-					arr.add(generarEmail(row.getCell(0).toString()
+					else arr.add(row.getCell(0).toString());
+					//NIF
+					if(row.getCell(1)==null) arr.add("");
+					else arr.add(row.getCell(1).toString());
+					//EMAIL
+					if(row.getCell(0)==null) arr.add("");
+					else arr.add(generarEmail(row.getCell(0).toString()
 							.replace(" ", "")));
-					
+					//CODIGO COLEGIO
 					if(row.getCell(2)==null) arr.add("-1");
 					else arr.add(row.getCell(2).toString());// codColegio
+					//PASSWORD
 					arr.add(generarPassword());
 
 					mapa.put(cont++, arr);
@@ -81,10 +88,20 @@ public class RCensus implements ReadCensus {
 		
 	}
 
+	/**
+	 * Método que genera el email/usuario del votante
+	 * @param nombre
+	 * @return	email
+	 */
 	private String generarEmail(String nombre) {
 		return nombre + "@gmail.com";
 	}
 	
+	/**
+	 * Método que genera una contraseña aleatoria.
+	 * Esta contraseña estará formada por 5 letras, 2 números y un símbolo.
+	 * @return	La contraseña aleatoria
+	 */
 	private String generarPassword(){
 		String [] letras = {"a", "b",  "c",  "d",  "e",  "f",  "g",  "h",  "i",  "j",
 			"k",  "l",  "m",  "n",  "o",  "p",  "q",  "r",  "s",  "t",  "u",  "v",  "w",
