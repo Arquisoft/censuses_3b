@@ -22,7 +22,7 @@ public class InsertP implements Insert {
 	 */
 	@Override
 	public void insertar(Votante v) {
-		Connection c;
+		Connection c ;
 		String error = "";
 		
 		if(reportR.validarVotante(v)){

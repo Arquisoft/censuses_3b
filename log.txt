@@ -1,0 +1,21 @@
+18/2/2016;13:50:56;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;13:50:56;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;13:50:56;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:0:25;ERROR: En el votante  con Nombre: Juan Torres Pardo; con NIF: 90500084Y;Cod Colegio electoral incorrecto;
+18/2/2016;14:0:25;ERROR: En el votante  con Nombre: Luis López Fernando; con NIF: 19160962F;Cod Colegio electoral incorrecto;
+18/2/2016;14:0:25;ERROR: En el votante  con Nombre: Ana Torres Pardo; con NIF: 09940449X;Cod Colegio electoral incorrecto;
+18/2/2016;14:13:53;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:13:53;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:13:53;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:15:37;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:15:38;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:15:39;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:16:18;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:16:19;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:16:20;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:26:43;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:26:43;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:26:43;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:37:28;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:37:29;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
+18/2/2016;14:37:30;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.

@@ -47,12 +47,12 @@ public class RCensus implements ReadCensus {
 					if(row.getCell(1)==null) arr.add("");
 					else arr.add(row.getCell(1).toString());
 					//EMAIL
-					if(row.getCell(0)==null) arr.add("");
-					else arr.add(generarEmail(row.getCell(0).toString()
-							.replace(" ", "")));
+					if(row.getCell(2)==null) arr.add("");
+					
+					else arr.add(row.getCell(2).toString());
 					//CODIGO COLEGIO
-					if(row.getCell(2)==null) arr.add("-1");
-					else arr.add(row.getCell(2).toString());// codColegio
+					if(row.getCell(3)==null) arr.add("-1");
+					else arr.add(row.getCell(3).toString());// codColegio
 					//PASSWORD
 					arr.add(generarPassword());
 
@@ -88,14 +88,7 @@ public class RCensus implements ReadCensus {
 		
 	}
 
-	/**
-	 * Método que genera el email/usuario del votante
-	 * @param nombre
-	 * @return	email
-	 */
-	private String generarEmail(String nombre) {
-		return nombre + "@gmail.com";
-	}
+	
 	
 	/**
 	 * Método que genera una contraseña aleatoria.

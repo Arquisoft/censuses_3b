@@ -29,7 +29,7 @@ public class LoadUsers {
 	}
 
 	
-	void run(String... args) {
+	public void run(String... args) {
 
 		String ruta;
 		if(args.length >0)
