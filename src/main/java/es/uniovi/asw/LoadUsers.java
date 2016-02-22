@@ -2,8 +2,6 @@ package es.uniovi.asw;
 
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -38,7 +36,6 @@ public class LoadUsers {
 	
 	public static void arrancarConsola(){
 		String ruta = "";
-		String fichero = "";
 		
 				while(select != 0){
 					
@@ -49,7 +46,6 @@ public class LoadUsers {
 								"3.- Carta en formato txt e inserción de usuarios\n" +
 								"4.- Borrar la base de datos\n" +
 								"0.- Salir");
-						//Recojo una variable por consola
 						select = Integer.parseInt(scanner.next()); 
 			
 						switch(select){
@@ -60,7 +56,6 @@ public class LoadUsers {
 							formatearCartaPdf(ruta);
 							break;
 						case 3: 
-							
 							formatearCartaTxt(ruta);
 							break;
 						case 4:
@@ -116,9 +111,13 @@ public class LoadUsers {
 		String ruta;
 		String fichero;
 		fichero = scanner.next();
-		ruta = "src/test/resources/" + fichero;
-		System.out.println("La ruta es" + ruta);
-		return ruta;
+		if (fichero.contains(".")) {
+			ruta = "src/test/resources/" + fichero;
+			System.out.println("La ruta es " + ruta);
+			return ruta;
+		}
+		
+		return "src/test/resources/test.xlsx";
 	}
 	
 }
