@@ -1,0 +1,2 @@
+Este directorio debe existir para la correcta generación de las cartas de 
+los usuarios.
