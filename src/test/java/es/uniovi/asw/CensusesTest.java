@@ -88,7 +88,7 @@ public void CartaTXT() {
 	Votante v = new Votante("Pedro Garcia", "58622104P", "pedro@gmail.com", 5698, "ghyts52?");
 	
 	//La carta aun no existe
-	String ruta = "cartas/58622104P.txt";
+	String ruta = "src/test/resources/cartas/58622104P.txt";
     File archivo = new File(ruta);
     assertEquals(false, archivo.exists());
     
@@ -108,7 +108,7 @@ public void CartaPDF() {
 	Votante v = new Votante("Pedro Garcia", "58622104S", "pedro@gmail.com", 5698, "ghyts52?");
 	
 	//La carta aun no existe
-	String ruta = "cartas/58622104S.pdf";
+	String ruta = "src/test/resources/cartas/58622104S.pdf";
     File archivo = new File(ruta);
     assertEquals(false, archivo.exists());
     
