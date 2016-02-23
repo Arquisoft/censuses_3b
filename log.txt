@@ -67,3 +67,11 @@
 23/2/2016;18:0:11;ERROR: El votante con nombre: Juan Torres Pardo y DNI: 90500084Y no se ha podido cargar correctamente en la base de datos.
 23/2/2016;18:0:11;ERROR: El votante con nombre: Luis López Fernando y DNI: 19160962F no se ha podido cargar correctamente en la base de datos.
 23/2/2016;18:0:11;ERROR: El votante con nombre: Ana Torres Pardo y DNI: 09940449X no se ha podido cargar correctamente en la base de datos.
+23/2/2016;19:29:17;ERROR: En el votante  con NIF: 56933104R;Nombre incorrecto;
+23/2/2016;19:29:18;ERROR: En el votante  con Nombre: Carmen;NIF incorrecto;
+23/2/2016;19:29:18;ERROR: En el votante  con Nombre: Pablo; con NIF: 89641208G;Email incorrecto;
+23/2/2016;19:29:19;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;Cod Colegio electoral incorrecto;
+23/2/2016;19:30:9;ERROR: En el votante  con NIF: 56933104R;Nombre incorrecto;
+23/2/2016;19:30:10;ERROR: En el votante  con Nombre: Carmen;NIF incorrecto;
+23/2/2016;19:30:10;ERROR: En el votante  con Nombre: Pablo; con NIF: 89641208G;Email incorrecto;
+23/2/2016;19:30:11;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;Cod Colegio electoral incorrecto;
