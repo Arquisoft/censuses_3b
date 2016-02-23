@@ -25,6 +25,8 @@ data/
 # Libraries
 lib/
 
+# Cartas
+*.pdf
 
 # Eclipse Core
 .project

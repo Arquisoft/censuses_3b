@@ -4,7 +4,7 @@ import es.uniovi.asw.parser.Votante;
 
 public class CartaAdapted {
 	
-	private static String RUTA = "cartas/";
+	private static String RUTA = "src/test/resources/cartas/";
 	
 	/**
 	 * Método que devuelve la ruta de la carpeta en la que se almacenarán todas las cartas
