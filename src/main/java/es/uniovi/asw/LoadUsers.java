@@ -1,23 +1,21 @@
 package es.uniovi.asw;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 import java.util.Scanner;
 
-import es.uniovi.asw.reportWriter.WReportP;
 import es.uniovi.asw.dbUpdate.InsertP;
-import es.uniovi.asw.dbUpdate.Jdbc;
 import es.uniovi.asw.dbUpdate.WReportR;
+import es.uniovi.asw.dbUpdate.persistence.PersistenceFactory;
 import es.uniovi.asw.parser.Insert;
 import es.uniovi.asw.parser.InsertR;
+import es.uniovi.asw.parser.Votante;
 import es.uniovi.asw.parser.carta.CartaCensuses;
 import es.uniovi.asw.parser.carta.CartaPDF;
 import es.uniovi.asw.parser.carta.CartaTextoPlano;
 import es.uniovi.asw.parser.read.RCensus;
+import es.uniovi.asw.reportWriter.WReportP;
 
 /**
  * Main application
@@ -83,40 +81,16 @@ public class LoadUsers {
 			}
 
 	private static void verContenidoBase() {
-		Connection c = null;
-		
-		try {
-			c = Jdbc.getConnection();
-			PreparedStatement ps = c.prepareStatement("SELECT * FROM CENSOS");
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()){
-				System.out.println("ID: " +rs.getLong(1) + " NOMBRE: " + rs.getString(2) + " NIF: " + rs.getString(3) + " EMAIL: " + rs.getString(4) + " CÓDIGO COLEGIO ELECTORAL: " + rs.getString(5) + " CONTRASEÑA " + rs.getString(6) );
-			}
-			c.close();
-
-		} catch (Throwable e) {
-			System.out.println("Error, fallado el borrado de datos");
-			e.printStackTrace();
+		List<Votante> votantes = PersistenceFactory.getVotantesPers().find();
+		if(votantes.isEmpty()) 
+			System.out.println("La base de datos está vacía");
+		for(Votante v: votantes){
+			System.out.println(v.toString());
 		}
-
 	}
 
 	private static void borrarCamposBD() {
-		Connection c = null;
-		try {
-			  c = Jdbc.getConnection();
-			  Statement st = c.createStatement();
-			  // borra toda la información de la tabla censos
-			  st.execute("DELETE FROM PUBLIC.CENSOS");
-			  st.close();
-			  c.close();
-
-			} catch (Throwable e)  {
-			  System.out.println("Error, fallado el borrado de datos");
-			  e.printStackTrace();
-			}
-		
+		PersistenceFactory.getVotantesPers().delete();
 	}
 
 	private static void formatearCartaTxt(String ruta) {

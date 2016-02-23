@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import es.uniovi.asw.dbUpdate.InsertP;
 import es.uniovi.asw.dbUpdate.WReportR;
+import es.uniovi.asw.dbUpdate.persistence.PersistenceFactory;
 import es.uniovi.asw.parser.Votante;
 import es.uniovi.asw.parser.carta.CartaCensuses;
 import es.uniovi.asw.parser.carta.CartaPDF;
@@ -33,7 +34,7 @@ public void DBUpdate1() {
 		Votante v = new Votante("Pedro Garcia", "56982104R", "pedro@gmail.com", 5698, "ghyts52?");
 		//Lo insertamos en la base de datos
 		insertP.insertar(v);
-		Votante v2 = insertP.findVotante(v.getNIF());
+		Votante v2 = PersistenceFactory.getVotantesPers().findVotante(v.getNIF());
 		//Comprobamos que todos los datos se han añadido correctamente
 		assertEquals(v.getNombre(), v2.getNombre());
 		assertEquals(v.getNIF(), v2.getNIF());
@@ -41,7 +42,7 @@ public void DBUpdate1() {
 		assertEquals(v.getCodColegioElectoral(), v2.getCodColegioElectoral());
 		assertEquals(v.getPassword(), v2.getPassword());		
 		
-		insertP.delete();
+		PersistenceFactory.getVotantesPers().delete();
 }
 
 @Test
@@ -60,12 +61,13 @@ public void DBUpdate2() {
 	Votante v3;
 	for(Votante vot: list){
 		insertP.insertar(vot);
-		 v3= insertP.findVotante(vot.getNIF());
+		 v3= PersistenceFactory.getVotantesPers().findVotante(vot.getNIF());
+		 
 		//Comprobamos que no se han añadido a la base de datos
 		assertEquals(v3, null);
 	}
 
-	insertP.delete();
+	PersistenceFactory.getVotantesPers().delete();
 }
 
 
@@ -166,8 +168,8 @@ public void WriteReport(){
 		    }
 			
 		}
-
-		insertP.delete();
+		PersistenceFactory.getVotantesPers().delete();
+		
 		b.close();
 	}catch (Exception e) {
 		e.getStackTrace();
