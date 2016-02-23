@@ -2,6 +2,8 @@ package es.uniovi.asw;
 
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -19,9 +21,6 @@ import es.uniovi.asw.parser.read.RCensus;
 
 /**
  * Main application
- * 
- * @author Labra
- *
  */
 public class LoadUsers {
 	static Scanner scanner = new Scanner(System.in); //Recojo texto por consola
@@ -44,7 +43,8 @@ public class LoadUsers {
 								"1.- Leer de fichero. Indicar una ruta tal que : ejemplo.xlsx\n" +
 								"2.- Carta en formato PDF e inserción de ususarios\n" +
 								"3.- Carta en formato txt e inserción de usuarios\n" +
-								"4.- Borrar la base de datos\n" +
+								"4.- Ver contenido de la base de datos\n" +
+								"5.- Borrar la base de datos\n" +
 								"0.- Salir");
 						select = Integer.parseInt(scanner.next()); 
 			
@@ -59,6 +59,9 @@ public class LoadUsers {
 							formatearCartaTxt(ruta);
 							break;
 						case 4:
+							verContenidoBase();
+							break;
+						case 5:
 							borrarCamposBD();
 							break;
 						case 0: 
@@ -79,6 +82,26 @@ public class LoadUsers {
 
 			}
 
+	private static void verContenidoBase() {
+		Connection c = null;
+		
+		try {
+			c = Jdbc.getConnection();
+			PreparedStatement ps = c.prepareStatement("SELECT * FROM CENSOS");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				System.out.println("ID: " +rs.getLong(1) + " NOMBRE: " + rs.getString(2) + " NIF: " + rs.getString(3) + " EMAIL: " + rs.getString(4) + " CÓDIGO COLEGIO ELECTORAL: " + rs.getString(5) + " CONTRASEÑA " + rs.getString(6) );
+			}
+			c.close();
+
+		} catch (Throwable e) {
+			System.out.println("Error, fallado el borrado de datos");
+			e.printStackTrace();
+		}
+
+	}
+
 	private static void borrarCamposBD() {
 		Connection c = null;
 		try {
@@ -86,11 +109,14 @@ public class LoadUsers {
 			  Statement st = c.createStatement();
 			  // borra toda la información de la tabla censos
 			  st.execute("DELETE FROM PUBLIC.CENSOS");
+			  st.close();
+			  c.close();
 
 			} catch (Throwable e)  {
 			  System.out.println("Error, fallado el borrado de datos");
 			  e.printStackTrace();
 			}
+		
 	}
 
 	private static void formatearCartaTxt(String ruta) {
