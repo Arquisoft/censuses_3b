@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import es.uniovi.asw.parser.Votante;
 
@@ -77,5 +78,21 @@ public class InsertP implements Insert {
 		
 		return v;
 		
+	}
+
+	public void delete() {
+		Connection c = null;
+		try {
+			  c = Jdbc.getConnection();
+			  Statement st = c.createStatement();
+			  // borra toda la información de la tabla censos
+			  st.execute("DELETE FROM PUBLIC.CENSOS");
+			  st.close();
+			  c.close();
+
+			} catch (Throwable e)  {
+			  System.out.println("Error, fallado el borrado de datos");
+			  e.printStackTrace();
+			}
 	}
 }
