@@ -25,7 +25,49 @@ import es.uniovi.asw.reportWriter.WReportP;
 
 public class CensusesTest {
 
+@Test
+public void LoadUsers(){
+	LoadUsers.verContenidoBase();
+	String rutaExcel = "src/test/resources/test.xlsx";
+	LoadUsers.formatearCartaTxt(rutaExcel);
+	String ruta = "src/test/resources/cartas/90500084Y.txt";
+    File archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
 
+    ruta = "src/test/resources/cartas/19160962F.txt";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+    
+    ruta = "src/test/resources/cartas/09940449X.txt";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+    
+    LoadUsers.formatearCartaPdf(rutaExcel);
+	ruta = "src/test/resources/cartas/90500084Y.pdf";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+
+    ruta = "src/test/resources/cartas/19160962F.pdf";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+    
+    ruta = "src/test/resources/cartas/09940449X.pdf";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+    
+    LoadUsers.verContenidoBase();
+    LoadUsers.borrarCamposBD();
+    LoadUsers.verContenidoBase();
+	
+}
+	
+	
 @Test
 public void DBUpdate1() {
 		
@@ -80,6 +122,24 @@ public void DBUpdate2() {
 	}
 
 	PersistenceFactory.getVotantesPers().delete();
+}
+
+@Test
+public void Persistence(){
+	Votante v = new Votante("Pedro Garcia", "56982104R", "pedro@gmail.com", 5698, "ghyts52?");
+	PersistenceFactory.getVotantesPers().insert(v, new WReportR(new WReportP()));
+	Votante v2 = PersistenceFactory.getVotantesPers().findVotante("56982104R");
+	assertEquals(v.toString(), v2.toString());
+	
+	//Error
+	PersistenceFactory.getVotantesPers().insert(v, new WReportR(new WReportP()));
+	
+
+	PersistenceFactory.getVotantesPers().delete();
+	v2 = PersistenceFactory.getVotantesPers().findVotante("56982104R");
+	assertEquals(v2, null);
+	
+	
 }
 
 @Test

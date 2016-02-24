@@ -80,7 +80,7 @@ public class LoadUsers {
 
 			}
 
-	private static void verContenidoBase() {
+	static void verContenidoBase() {
 		List<Votante> votantes = PersistenceFactory.getVotantesPers().find();
 		if(votantes.isEmpty()) 
 			System.out.println("La base de datos está vacía");
@@ -89,25 +89,25 @@ public class LoadUsers {
 		}
 	}
 
-	private static void borrarCamposBD() {
+	static void borrarCamposBD() {
 		PersistenceFactory.getVotantesPers().delete();
 	}
 
-	private static void formatearCartaTxt(String ruta) {
+	static void formatearCartaTxt(String ruta) {
 		carta = new CartaTextoPlano();
 		WReportR report1 = new WReportR(new WReportP());
 		Insert r1 = new InsertR(new RCensus(), carta, ruta);
 		r1.addVotante(new InsertP(report1) );
 	}
 
-	private static void formatearCartaPdf(String ruta) {
+	static void formatearCartaPdf(String ruta) {
 		carta = new CartaPDF();
 		WReportR report = new WReportR(new WReportP());
 		Insert r = new InsertR(new RCensus(), carta, ruta);
 		r.addVotante(new InsertP(report) );
 	}
 
-	private static String asignarRutaFichero() {
+	static String asignarRutaFichero() {
 		String ruta;
 		String fichero;
 		fichero = scanner.next();
