@@ -81,7 +81,7 @@ public class Jdbc {
 		
 	}
 
-	public static void close(ResultSet rs, Statement st, Connection c) {
+	/*public static void close(ResultSet rs, Statement st, Connection c) {
 		close(rs);
 		close(st);
 		close(c);
@@ -103,7 +103,7 @@ public class Jdbc {
 	public static void close(Connection c) {
 		if (c != null) try { c.close(); } catch(SQLException e) {};
 	}
-
+*/
 	public static Connection createThreadConnection() throws SQLException {
 		Connection con = getConnection();
 		con.setAutoCommit( false );
