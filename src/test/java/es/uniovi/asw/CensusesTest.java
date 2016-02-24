@@ -14,6 +14,7 @@ import org.junit.Test;
 import es.uniovi.asw.dbUpdate.InsertP;
 import es.uniovi.asw.dbUpdate.WReportR;
 import es.uniovi.asw.dbUpdate.persistence.PersistenceFactory;
+import es.uniovi.asw.parser.InsertR;
 import es.uniovi.asw.parser.Votante;
 import es.uniovi.asw.parser.carta.CartaCensuses;
 import es.uniovi.asw.parser.carta.CartaPDF;
@@ -23,6 +24,7 @@ import es.uniovi.asw.parser.read.ReadCensus;
 import es.uniovi.asw.reportWriter.WReportP;
 
 public class CensusesTest {
+
 
 @Test
 public void DBUpdate1() {
@@ -42,7 +44,16 @@ public void DBUpdate1() {
 		assertEquals(v.getCodColegioElectoral(), v2.getCodColegioElectoral());
 		assertEquals(v.getPassword(), v2.getPassword());		
 		
+		//Intentamos introducir el mismo votante
+		insertP.insertar(v);
+		
+		//Intentamos buscar un votante inexistente en la base de datos
+		v2 = PersistenceFactory.getVotantesPers().findVotante("");
+		assertEquals(v2, null);
+		
 		PersistenceFactory.getVotantesPers().delete();
+		
+		
 }
 
 @Test
@@ -57,6 +68,7 @@ public void DBUpdate2() {
 	list.add(new Votante("Carmen", "", "carmen@gmail.com", 54, "alsjd85?"));
 	list.add(new Votante("Pablo", "89641208G", "", 54, "alsjd85?"));
 	list.add(new Votante("Javi", "85214236T", "javi@gmail.com", -8, "liksj67("));
+	list.add(new Votante("Javi", "85214236T", "javi@gmail.com", 86, ""));
 	
 	Votante v3;
 	for(Votante vot: list){
@@ -70,6 +82,44 @@ public void DBUpdate2() {
 	PersistenceFactory.getVotantesPers().delete();
 }
 
+@Test
+public void Parser(){
+	InsertR insert = new InsertR(new RCensus(), new CartaTextoPlano(), "src/test/resources/test.xlsx");
+	WReportR report = new WReportR(new WReportP());
+	InsertP insertP = new InsertP(report);
+	insert.addVotante(insertP);
+	
+	String ruta = "src/test/resources/cartas/90500084Y.txt";
+    File archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+
+    ruta = "src/test/resources/cartas/19160962F.txt";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+    
+    ruta = "src/test/resources/cartas/09940449X.txt";
+    archivo = new File(ruta);
+    assertEquals(true, archivo.exists());
+    archivo.delete();
+}
+
+@Test
+public void TestVotante(){
+	Votante v = new Votante();
+	v.setNombre("Pablo");
+	v.setNIF("665151G");
+	v.setEmail("Pablo@gmail.com");
+	v.setCodColegioElectoral(55);
+	v.setPassword("kasnfkf56&");
+	String vot = v.toString();
+	String vot2 = "Votante [nombre=" + v.getNombre() + ", NIF=" + v.getNIF() + ", email=" + v.getEmail() 
+			+ ", codColegioElectoral="+ v.getCodColegioElectoral() + ", password=" + v.getPassword() + "]";
+	
+	assertEquals(vot, vot2);
+	
+}
 
 @Test
 public void RCensusTest() {

@@ -23,13 +23,8 @@ public class CartaTextoPlano implements CartaCensuses{
         File archivo = new File(ruta);
         BufferedWriter bw;
        try{
-        if(archivo.exists()) {
-            bw = new BufferedWriter(new FileWriter(archivo));
-            bw.write("El fichero de texto ya estaba creado.");
-        } else {
             bw = new BufferedWriter(new FileWriter(archivo));
             bw.write(cartaAdapted.contenidoCarta(v));
-        }
         bw.close();
        }catch (Exception e) {
 			e.printStackTrace();
