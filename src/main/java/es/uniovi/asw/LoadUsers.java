@@ -27,58 +27,14 @@ public class LoadUsers {
 
 	public static void main(String... args) throws SQLException {
 		
-		arrancarConsola();
+		String ruta = ("src/test/resources/test.xlsx");
+		formatearCartaPdf(ruta);
+		formatearCartaTxt(ruta);
+		System.out.println("Datos cargados en la base.");
 		    
 	}
 	
-	public static void arrancarConsola(){
-		String ruta = "";
-		
-				while(select != 0){
-					
-					try{
-						System.out.println("Elige opción: \n"+ 
-								"1.- Leer de fichero. Indicar una ruta tal que : ejemplo.xlsx\n" +
-								"2.- Carta en formato PDF e inserción de ususarios\n" +
-								"3.- Carta en formato txt e inserción de usuarios\n" +
-								"4.- Ver contenido de la base de datos\n" +
-								"5.- Borrar la base de datos\n" +
-								"0.- Salir");
-						select = Integer.parseInt(scanner.next()); 
-			
-						switch(select){
-						case 1: 
-							ruta = asignarRutaFichero(); 
-							break;
-						case 2: 
-							formatearCartaPdf(ruta);
-							break;
-						case 3: 
-							formatearCartaTxt(ruta);
-							break;
-						case 4:
-							verContenidoBase();
-							break;
-						case 5:
-							borrarCamposBD();
-							break;
-						case 0: 
-							System.out.println("Ha elegido la opcion de salir");
-							System.exit(0);
-							break;
-						default:
-							System.out.println("Opción no reconocida");
-							break;
-						}
-						
-						System.out.println("\n"); 
-						
-					}catch(Exception e){
-						System.out.println("Error, no ha elegido ninguna opcion");
-					}
-				}
 
-			}
 
 	static void verContenidoBase() {
 		List<Votante> votantes = PersistenceFactory.getVotantesPers().find();
@@ -107,17 +63,6 @@ public class LoadUsers {
 		r.addVotante(new InsertP(report) );
 	}
 
-	static String asignarRutaFichero() {
-		String ruta;
-		String fichero;
-		fichero = scanner.next();
-		if (fichero.contains(".")) {
-			ruta = "src/test/resources/" + fichero;
-			System.out.println("La ruta es " + ruta);
-			return ruta;
-		}
-		
-		return "src/test/resources/test.xlsx";
-	}
+	
 	
 }

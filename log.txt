@@ -76,3 +76,8 @@
 25/2/2016;9:41:38;ERROR: En el votante  con Nombre: Pablo; con NIF: 89641208G;Email incorrecto;
 25/2/2016;9:41:38;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;Cod Colegio electoral incorrecto;
 25/2/2016;9:41:39;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;Contraseña incorrecta;
+3/3/2016;9:18:33;ERROR: En el votante  con NIF: 56933104R;Nombre incorrecto;
+3/3/2016;9:18:33;ERROR: En el votante  con Nombre: Carmen;NIF incorrecto;
+3/3/2016;9:18:34;ERROR: En el votante  con Nombre: Pablo; con NIF: 89641208G;Email incorrecto;
+3/3/2016;9:18:34;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;Cod Colegio electoral incorrecto;
+3/3/2016;9:18:35;ERROR: En el votante  con Nombre: Javi; con NIF: 85214236T;ContraseÃ±a incorrecta;
